@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { ArrowDownRight, ArrowUpRight, Dribbble, Instagram, Linkedin, Mail, Menu, X } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Dribbble, Instagram, Linkedin, Mail, Menu, Phone, X } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -71,7 +71,7 @@ function BrandMark() {
   return (
     <a href="#top" className="flex items-center gap-2" data-testid="link-home">
       <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#4a8b5d]" aria-hidden="true" />
-      <span className="font-mono text-[11px] font-medium uppercase tracking-[.18em]">[Your name]</span>
+      <span className="font-mono text-[11px] font-medium uppercase tracking-[.18em]">Krish</span>
     </a>
   );
 }
@@ -130,14 +130,14 @@ function Home() {
           <span className="mt-4 ml-auto block h-2 w-2 rounded-full bg-[#4a8b5d]" />
         </div>
         <div className="reveal">
-          <p className="mb-6 font-mono text-[10px] uppercase tracking-[.18em] text-[#171716]/55 md:mb-10">Based in [Your city] · Working worldwide</p>
+          <p className="mb-6 font-mono text-[10px] uppercase tracking-[.18em] text-[#171716]/55 md:mb-10">Based in Pundri, Haryana · Working worldwide</p>
           <h1 id="hero-title" className="hero-title max-w-[1120px] text-[#171716]">
-            <span className="hero-outline">[Your]</span><br /><span className="ml-[.34em]">[Name]</span>
+            <span className="hero-outline">Krish</span>
           </h1>
         </div>
         <div className="reveal delay-2 mt-12 flex items-end justify-between gap-5 md:mt-16">
           <p className="max-w-[390px] text-lg leading-[1.18] tracking-[-.035em] text-[#171716]/75 md:text-[22px]">
-            [Your role] making thoughtful digital things for people with something to say.
+            AI-assisted developer making thoughtful digital things for people with something to say.
           </p>
           <a href="#work" className="group hidden shrink-0 items-center gap-3 pb-1 font-mono text-[10px] uppercase tracking-[.16em] md:flex" data-testid="link-hero-work">
             Scroll to explore <ArrowDownRight size={16} strokeWidth={1.4} className="transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
@@ -244,7 +244,7 @@ function Home() {
           </div>
           <div className="reveal delay-2 max-w-[680px]">
             <p className="text-3xl leading-[1.05] tracking-[-.065em] md:text-5xl">Good design is not decoration. It is the useful bit between a good idea and someone choosing to care.</p>
-            <p className="mt-10 max-w-[470px] text-base leading-relaxed text-[#171716]/60 md:ml-[22%]">I’m [Your name], a [your role] working across identity, digital products, and the spaces where culture meets technology. I like clear questions, generous collaboration, and details that reward a second look.</p>
+            <p className="mt-10 max-w-[470px] text-base leading-relaxed text-[#171716]/60 md:ml-[22%]">I’m Krish, an AI-assisted developer working across digital products and the spaces where people meet technology. I like clear questions, generous collaboration, and details that reward a second look.</p>
             <a href="#contact" className="group mt-10 inline-flex items-center gap-3 border-b border-[#171716]/35 pb-2 font-mono text-[10px] uppercase tracking-[.16em]" data-testid="link-about-contact">Start a conversation <ArrowUpRight size={15} strokeWidth={1.4} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></a>
           </div>
         </div>
@@ -281,9 +281,14 @@ function Home() {
           <AvailabilityPill />
           <h2 id="contact-title" className="contact-display mt-10 max-w-[1100px] font-semibold">Have a project<br /><span className="ml-[.38em]">in mind<span className="text-[#4a8b5d]">?</span></span></h2>
           <div className="mt-16 flex flex-col items-start justify-between gap-10 border-t border-[#171716]/20 pt-7 md:flex-row md:items-end">
-            <a href="mailto:your-email@example.com" className="group flex items-center gap-3 text-xl tracking-[-.04em] md:text-2xl" data-testid="link-email">
-              <Mail size={18} strokeWidth={1.4} /> [your-email@example.com] <ArrowUpRight size={17} strokeWidth={1.4} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </a>
+            <div className="flex flex-col items-start gap-4">
+              <a href="mailto:krrishai0916@gmail.com" className="group flex items-center gap-3 text-xl tracking-[-.04em] md:text-2xl" data-testid="link-email">
+                <Mail size={18} strokeWidth={1.4} /> krrishai0916@gmail.com <ArrowUpRight size={17} strokeWidth={1.4} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
+              <a href="tel:+919306091154" className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[.14em] text-[#171716]/60" data-testid="link-phone">
+                <Phone size={16} strokeWidth={1.4} /> +91 93060 91154 <ArrowUpRight size={15} strokeWidth={1.4} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
+            </div>
             <p className="max-w-[230px] text-sm leading-relaxed text-[#171716]/55 md:text-right">Available for selected freelance projects and thoughtful collaborations.</p>
           </div>
         </div>
