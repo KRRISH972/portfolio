@@ -1,6 +1,6 @@
-# [Project name]
+# Minimalist Personal Portfolio
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A responsive single-page portfolio site with editable placeholders for a designer/developer's work, services, experience, and contact details.
 
 ## Run & Operate
 
@@ -22,23 +22,32 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/minimalist-portfolio/src/App.tsx` — the portfolio content, section structure, navigation, and motion behavior
+- `artifacts/minimalist-portfolio/src/index.css` — the visual system, responsive layout, typography, and reveal animation styles
+- `artifacts/minimalist-portfolio/package.json` — the web app scripts and frontend dependencies
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The portfolio is frontend-only; editable placeholder content lives in the page source so it can be replaced without backend setup.
+- The page uses anchor navigation and IntersectionObserver-based reveals rather than a client-side routing flow.
+- Project artwork is intentionally CSS-built so the starter stays lightweight and image-free.
+- The accent green is reserved for availability/status dots and small emphasis marks.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Sticky responsive navigation with Work, Service, Experience, Contact, and Let's Talk anchors
+- Editorial hero with outlined/filled name treatment
+- Selected work cards with CSS-built visual thumbnails
+- Services list, about copy, dark experience block, and contact CTA
+- Scroll-reveal motion with reduced-motion support
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Keep the site minimal, light, spacious, and easy to personalize with placeholders.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Replace bracketed placeholder content in `artifacts/minimalist-portfolio/src/App.tsx` before publishing.
 
 ## Pointers
 

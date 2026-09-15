@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Minimalist Personal Portfolio"
+description = "A responsive personal portfolio website with a bold editorial layout, selected work, services, experience, and a focused contact call to action."
+version = "1.0.0"
+id = "artifacts/minimalist-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18959
+
+[services.development]
+run = "pnpm --filter @workspace/minimalist-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/minimalist-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/minimalist-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18959"
+BASE_PATH = "/"
