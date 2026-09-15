@@ -93,19 +93,19 @@ function Home() {
 
   return (
     <main id="top" className="overflow-hidden">
-      <header className="nav-glass fixed left-0 top-0 z-50 w-full border-b border-[#171716]/10">
-        <div className="site-shell flex h-[72px] items-center justify-between">
+      <header className="nav-wrap fixed left-0 top-0 z-50 w-full">
+        <div className="site-shell nav-shell flex h-[62px] items-center justify-between">
           <AvailabilityPill />
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-            <a href="#work" className="font-mono text-[10px] uppercase tracking-[.16em] text-[#171716]/60 transition-colors hover:text-[#171716]" data-testid="link-nav-work">Work [03]</a>
-            <a href="#services" className="font-mono text-[10px] uppercase tracking-[.16em] text-[#171716]/60 transition-colors hover:text-[#171716]" data-testid="link-nav-services">Service [03]</a>
-            <a href="#experience" className="font-mono text-[10px] uppercase tracking-[.16em] text-[#171716]/60 transition-colors hover:text-[#171716]" data-testid="link-nav-experience">Experience [X+]</a>
-            <a href="#contact" className="font-mono text-[10px] uppercase tracking-[.16em] text-[#171716]/60 transition-colors hover:text-[#171716]" data-testid="link-nav-contact">Contact</a>
+          <nav className="nav-links hidden items-center gap-1 md:flex" aria-label="Main navigation">
+            <a href="#work" className="nav-link" data-testid="link-nav-work">Work <span>[03]</span></a>
+            <a href="#services" className="nav-link" data-testid="link-nav-services">Service <span>[03]</span></a>
+            <a href="#experience" className="nav-link" data-testid="link-nav-experience">Experience <span>[X+]</span></a>
+            <a href="#contact" className="nav-link" data-testid="link-nav-contact">Contact</a>
             <a href="#contact" className="talk-button" data-testid="link-nav-talk">Let&apos;s Talk <ArrowUpRight size={14} strokeWidth={1.5} /></a>
           </nav>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#171716]/20 md:hidden"
+            className="nav-menu-button flex h-10 w-10 items-center justify-center rounded-full md:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
             data-testid="button-menu"
@@ -114,11 +114,11 @@ function Home() {
           </button>
         </div>
         {menuOpen && (
-          <nav className="menu-panel site-shell border-t border-[#171716]/10 pb-5 pt-4 md:hidden" aria-label="Mobile navigation">
-            <a href="#work" onClick={closeMenu} className="block border-b border-[#171716]/10 py-3 font-mono text-[11px] uppercase tracking-[.16em]" data-testid="link-mobile-work">Work</a>
-            <a href="#services" onClick={closeMenu} className="block border-b border-[#171716]/10 py-3 font-mono text-[11px] uppercase tracking-[.16em]" data-testid="link-mobile-services">Services</a>
-            <a href="#experience" onClick={closeMenu} className="block border-b border-[#171716]/10 py-3 font-mono text-[11px] uppercase tracking-[.16em]" data-testid="link-mobile-experience">Experience [X+]</a>
-            <a href="#contact" onClick={closeMenu} className="block py-3 font-mono text-[11px] uppercase tracking-[.16em]" data-testid="link-mobile-contact">Contact</a>
+          <nav className="menu-panel site-shell pb-5 pt-4 md:hidden" aria-label="Mobile navigation">
+            <a href="#work" onClick={closeMenu} className="mobile-nav-link" data-testid="link-mobile-work">Work <span>[03]</span></a>
+            <a href="#services" onClick={closeMenu} className="mobile-nav-link" data-testid="link-mobile-services">Service <span>[03]</span></a>
+            <a href="#experience" onClick={closeMenu} className="mobile-nav-link" data-testid="link-mobile-experience">Experience <span>[X+]</span></a>
+            <a href="#contact" onClick={closeMenu} className="mobile-nav-link" data-testid="link-mobile-contact">Contact</a>
             <a href="#contact" onClick={closeMenu} className="talk-button mt-3 inline-flex" data-testid="link-mobile-talk">Let&apos;s Talk <ArrowUpRight size={14} strokeWidth={1.5} /></a>
           </nav>
         )}

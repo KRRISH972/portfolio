@@ -112,9 +112,59 @@
   margin: 0 auto;
 }
 
-.nav-glass {
-  background: rgba(244, 244, 244, .88);
-  backdrop-filter: blur(16px);
+.nav-wrap {
+  padding-top: 14px;
+}
+
+.nav-shell {
+  padding: 5px 7px 5px 10px;
+  border: 1px solid rgba(23, 23, 22, .14);
+  border-radius: 999px;
+  background: rgba(244, 244, 244, .86);
+  box-shadow: 0 10px 30px rgba(23, 23, 22, .06);
+  backdrop-filter: blur(18px);
+}
+
+.nav-links {
+  padding: 4px;
+  border: 1px solid rgba(23, 23, 22, .08);
+  border-radius: 999px;
+  background: rgba(23, 23, 22, .035);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .28rem;
+  border-radius: 999px;
+  padding: .58rem .72rem;
+  color: rgba(23, 23, 22, .56);
+  font-family: var(--app-font-mono);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.nav-link span {
+  color: rgba(23, 23, 22, .38);
+}
+
+.nav-link:hover {
+  background: rgba(244, 244, 244, .9);
+  color: #171716;
+}
+
+.nav-menu-button {
+  border: 1px solid rgba(23, 23, 22, .15);
+  background: rgba(244, 244, 244, .58);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.nav-menu-button:hover {
+  background: #f4f4f4;
+  transform: rotate(8deg);
 }
 
 .availability-pill {
@@ -287,7 +337,31 @@
 }
 
 .menu-panel {
+  margin-top: 8px;
+  padding-right: 16px;
+  padding-left: 16px;
+  border: 1px solid rgba(23, 23, 22, .14);
+  border-radius: 22px;
+  background: rgba(244, 244, 244, .96);
+  box-shadow: 0 14px 35px rgba(23, 23, 22, .08);
+  backdrop-filter: blur(18px);
   animation: panel-in 240ms ease-out both;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(23, 23, 22, .1);
+  padding: .9rem 0;
+  font-family: var(--app-font-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.mobile-nav-link span {
+  color: rgba(23, 23, 22, .42);
 }
 
 @keyframes panel-in {
@@ -298,6 +372,14 @@
 @media (max-width: 767px) {
   .site-shell {
     width: min(100% - 24px, 1440px);
+  }
+
+  .nav-wrap {
+    padding-top: 10px;
+  }
+
+  .nav-shell {
+    padding-left: 8px;
   }
 
   .hero-title {
