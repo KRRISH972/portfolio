@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { ArrowDownRight, ArrowUpRight, Dribbble, Instagram, Linkedin, Mail, Menu, Phone, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -85,6 +86,87 @@ function AvailabilityPill() {
   );
 }
 
+const megaMenuContent = {
+  work: {
+    eyebrow: 'Selected work',
+    title: 'A small edit of recent work.',
+    links: ['[Project name]', '[Project name]', '[Project name]'],
+    target: '#work',
+  },
+  service: {
+    eyebrow: 'What I do',
+    title: 'Clarity, character, and useful details.',
+    links: ['Brand direction', 'Digital experiences', 'Creative partnership'],
+    target: '#services',
+  },
+  experience: {
+    eyebrow: 'Experience',
+    title: 'A handful of places, people, and problems.',
+    links: ['[Studio / company]', '[Studio / company]', '[Studio / company]'],
+    target: '#experience',
+  },
+} as const;
+
+function MegaNavigation() {
+  const [openMenu, setOpenMenu] = useState<keyof typeof megaMenuContent | null>(null);
+
+  return (
+    <nav className="nav-links hidden items-center gap-1 md:flex" aria-label="Main navigation">
+      {Object.entries(megaMenuContent).map(([key, content]) => {
+        const menuKey = key as keyof typeof megaMenuContent;
+        return (
+          <div
+            key={key}
+            className="nav-menu-item"
+            onMouseLeave={() => setOpenMenu(null)}
+          >
+            <button
+              type="button"
+              className="nav-link"
+              aria-expanded={openMenu === menuKey}
+              onClick={() => setOpenMenu(openMenu === menuKey ? null : menuKey)}
+              onFocus={() => setOpenMenu(menuKey)}
+            >
+              {key === 'service' ? 'Service' : key[0].toUpperCase() + key.slice(1)}
+              <span>[{key === 'work' ? '03' : key === 'service' ? '03' : 'X+'}]</span>
+            </button>
+            <AnimatePresence>
+              {openMenu === menuKey && (
+                <motion.div
+                  className="nav-mega-panel"
+                  initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                  transition={{ duration: 0.18, ease: 'easeOut' }}
+                >
+                  <div className="nav-mega-intro">
+                    <p>{content.eyebrow}</p>
+                    <h3>{content.title}</h3>
+                    <a href={content.target} onClick={() => setOpenMenu(null)}>
+                      Explore <ArrowUpRight size={14} strokeWidth={1.5} />
+                    </a>
+                  </div>
+                  <div className="nav-mega-links">
+                    {content.links.map((link, index) => (
+                      <a href={content.target} key={link} onClick={() => setOpenMenu(null)}>
+                        <span>0{index + 1}</span>
+                        {link}
+                        <ArrowUpRight size={14} strokeWidth={1.5} />
+                      </a>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+      <a href="#contact" className="nav-link" data-testid="link-nav-contact">Contact</a>
+      <a href="#contact" className="talk-button" data-testid="link-nav-talk">Let&apos;s Talk <ArrowUpRight size={14} strokeWidth={1.5} /></a>
+    </nav>
+  );
+}
+
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   useScrollReveal();
@@ -96,13 +178,7 @@ function Home() {
       <header className="nav-wrap fixed left-0 top-0 z-50 w-full">
         <div className="site-shell nav-shell flex h-[62px] items-center justify-between">
           <AvailabilityPill />
-          <nav className="nav-links hidden items-center gap-1 md:flex" aria-label="Main navigation">
-            <a href="#work" className="nav-link" data-testid="link-nav-work">Work <span>[03]</span></a>
-            <a href="#services" className="nav-link" data-testid="link-nav-services">Service <span>[03]</span></a>
-            <a href="#experience" className="nav-link" data-testid="link-nav-experience">Experience <span>[X+]</span></a>
-            <a href="#contact" className="nav-link" data-testid="link-nav-contact">Contact</a>
-            <a href="#contact" className="talk-button" data-testid="link-nav-talk">Let&apos;s Talk <ArrowUpRight size={14} strokeWidth={1.5} /></a>
-          </nav>
+          <MegaNavigation />
           <button
             type="button"
             className="nav-menu-button flex h-10 w-10 items-center justify-center rounded-full md:hidden"
