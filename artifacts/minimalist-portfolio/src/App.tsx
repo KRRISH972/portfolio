@@ -167,6 +167,114 @@ function MegaNavigation() {
   );
 }
 
+type PortfolioNote = {
+  id: number;
+  eyebrow: string;
+  title: string;
+  detail: string;
+  time: string;
+};
+
+const portfolioNotes: PortfolioNote[] = [
+  {
+    id: 1,
+    eyebrow: 'Availability',
+    title: 'Open for new work',
+    detail: 'Selected freelance projects and thoughtful collaborations.',
+    time: 'Now',
+  },
+  {
+    id: 2,
+    eyebrow: 'Based in',
+    title: 'Pundri, Haryana',
+    detail: 'Working worldwide with people building useful things.',
+    time: 'India',
+  },
+  {
+    id: 3,
+    eyebrow: 'Focus',
+    title: 'AI-assisted development',
+    detail: 'Turning clear ideas into considered digital experiences.',
+    time: '01—03',
+  },
+];
+
+function NotificationStack() {
+  const [expanded, setExpanded] = useState(false);
+  const [notes, setNotes] = useState(portfolioNotes);
+
+  const removeNote = (id: number) => {
+    setNotes((current) => current.filter((note) => note.id !== id));
+  };
+
+  const resetNotes = () => {
+    setNotes(portfolioNotes);
+    setExpanded(false);
+  };
+
+  return (
+    <aside className="notification-stack" aria-label="Portfolio updates">
+      <div className="notification-stack-header">
+        <div>
+          <p className="notification-stack-label">Live notes</p>
+          <p className="notification-stack-count">{notes.length.toString().padStart(2, '0')} updates</p>
+        </div>
+        <button
+          type="button"
+          className="notification-stack-toggle"
+          onClick={() => (notes.length ? setExpanded((current) => !current) : resetNotes())}
+          aria-expanded={expanded}
+        >
+          {notes.length ? (expanded ? 'Collapse' : 'Expand') : 'Reset'}
+          <ArrowDownRight size={14} strokeWidth={1.4} className={expanded ? 'rotate-180' : ''} />
+        </button>
+      </div>
+      <div className={`notification-stack-cards ${expanded ? 'is-expanded' : ''}`} data-count={notes.length}>
+        <AnimatePresence initial={false} mode="popLayout">
+          {notes.map((note, index) => (
+            <motion.article
+              key={note.id}
+              layout
+              className="notification-card"
+              initial={{ opacity: 0, y: 18, scale: .96 }}
+              animate={{
+                opacity: 1,
+                y: expanded ? 0 : index * 12,
+                scale: expanded ? 1 : 1 - index * .035,
+              }}
+              exit={{ opacity: 0, x: 28, scale: .92 }}
+              transition={{ type: 'spring', stiffness: 360, damping: 28 }}
+              style={{ zIndex: notes.length - index }}
+            >
+              <div className="notification-card-topline">
+                <span className="notification-dot" aria-hidden="true" />
+                <span>{note.eyebrow}</span>
+                <span className="notification-time">{note.time}</span>
+              </div>
+              <h3>{note.title}</h3>
+              <p>{note.detail}</p>
+              <button
+                type="button"
+                className="notification-dismiss"
+                onClick={() => removeNote(note.id)}
+                aria-label={`Dismiss ${note.title}`}
+              >
+                <X size={14} strokeWidth={1.4} />
+              </button>
+            </motion.article>
+          ))}
+        </AnimatePresence>
+        {!notes.length && (
+          <div className="notification-empty">
+            <span>All clear</span>
+            <p>Nothing else to show right now.</p>
+          </div>
+        )}
+      </div>
+    </aside>
+  );
+}
+
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   useScrollReveal();
@@ -205,6 +313,9 @@ function Home() {
           <span className="font-mono text-[10px] uppercase leading-relaxed tracking-[.15em] text-[#171716]/50">Independent<br />designer / developer</span>
           <span className="mt-4 ml-auto block h-2 w-2 rounded-full bg-[#4a8b5d]" />
         </div>
+        <div className="hero-notification-desktop absolute right-[4%] top-[49%] hidden md:block">
+          <NotificationStack />
+        </div>
         <div className="reveal">
           <p className="mb-6 font-mono text-[10px] uppercase tracking-[.18em] text-[#171716]/55 md:mb-10">Based in Pundri, Haryana · Working worldwide</p>
           <h1 id="hero-title" className="hero-title max-w-[1120px] text-[#171716]">
@@ -218,6 +329,9 @@ function Home() {
           <a href="#work" className="group hidden shrink-0 items-center gap-3 pb-1 font-mono text-[10px] uppercase tracking-[.16em] md:flex" data-testid="link-hero-work">
             Scroll to explore <ArrowDownRight size={16} strokeWidth={1.4} className="transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
           </a>
+        </div>
+        <div className="reveal delay-3 mt-12 md:hidden">
+          <NotificationStack />
         </div>
       </section>
 
