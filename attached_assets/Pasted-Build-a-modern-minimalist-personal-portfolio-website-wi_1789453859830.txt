@@ -1,0 +1,41 @@
+Build a modern, minimalist personal portfolio website with the following exact design system:
+
+OVERALL STYLE
+- Clean, minimal, light theme (off-white / #F4F4F4 background) with generous whitespace
+- Bold, heavy sans-serif typography (grotesk-style font like "Inter" or "Archivo") for headings; huge oversized headline text as background decoration (very light gray, low opacity) behind each section title, e.g. "SERVICE", "EXPERIENCE" in giant faint letters
+- Smooth scroll-reveal animations: each section fades/slides in as the user scrolls
+- Rounded corners (soft, large radius ~24px) on the main content container/card
+- Small "/SECTIONNAME" label in bold black before every section heading (e.g. "/SERVICE", "/EXPERIENCE", "/SELECTED WORK")
+
+NAVBAR (sticky, top)
+- Left: a rounded pill badge with a small green dot + text "Available for New Project"
+- Center/right: nav links — Work (with project count in brackets), Service (with count), Experience (with years), Contact
+- Far right: a dark rounded pill button "Let's Talk →"
+
+HERO SECTION
+- Large bold full name as the hero headline, split into two weights (first name regular/outline style, last name bold filled) — placeholder: [YOUR FULL NAME]
+- Below it, a short one-line role/tagline — placeholder: [YOUR ROLE / TITLE]
+
+SELECTED WORK / PORTFOLIO SECTION
+- Label "/SELECTED WORK", giant faint "PORTFOLIO" text in background
+- Grid or stacked cards showing project thumbnails, title, and category — placeholder content for [PROJECT NAME], [PROJECT CATEGORY]
+
+SERVICES SECTION
+- Label "/SERVICE"
+- A vertical list of services, each row separated by a thin divider line, service name on the left (large text, first item bold/black, others gray), small arrow icon (↗) on the right — placeholder: [SERVICE 1], [SERVICE 2], [SERVICE 3]
+
+EXPERIENCE SECTION (dark contrast block)
+- This section has a dark background (near-black #1A1A1A) breaking the light theme, rounded corners, inside the same container
+- Label "/EXPERIENCE" in white, with "X+ years of experience" aligned top-right — placeholder: [X+ YEARS]
+- A list of roles: company name (bold white), job title (gray) on the left, date range on the right, separated by thin dividers — placeholder: [COMPANY], [JOB TITLE], [DATES] (repeat for each role I provide)
+
+CONTACT / CTA SECTION
+- Same "Available for New Project" pill badge repeated
+- Large bold headline "HAVE A PROJECT IN MIND?"
+- Below: contact button/email/social links — placeholder: [EMAIL], [SOCIAL LINKS]
+
+TECH
+- Build as a single responsive HTML/CSS/JS page (or React if specified), mobile-first, with smooth scroll and intersection-observer based fade-in animations for each section
+- Keep the color palette to: off-white background, black/dark-gray text, one dark section (#1A1A1A), one accent green dot only
+
+Use the placeholders above for my name, role, projects, services, experience, and contact info — I will fill those in myself.
